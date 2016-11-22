@@ -23,12 +23,10 @@ class Neuron < ApplicationRecord
     if result == 1
       self.weights.each_key do |k|
         self.weights[k] -= self.learning_rate * vals[k]
-        self.update
       end
     elsif result == -1
       self.weights.each_key do |k|
         self.weights[k] += self.learning_rate *vals[k]
-        self.update
       end
     end
   end
