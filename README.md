@@ -68,6 +68,10 @@ Challenges of the project include:
 - Adverbs
 - Adjectives
 
+### Value Calculations
+
+Values will be computed by the number of occurances of the category in the excerpt divided by the total number of words in the excerpt.
+
 ## Timeline
 
 - Neural Net Algorithm Design (2 days)
