@@ -7,10 +7,8 @@ class Neuron < ApplicationRecord
 
   def fired(vals)
     total = 0
-    weight_keys = self.weights.keys
-    vals.each do |val, i|
-      k = weight_keys[i]
-      total += self.weights[k] * val
+    self.weights.each_key do |k|
+      total += self.weights[k] * vals[k]
     end
 
     if total >= self.threshold
@@ -23,12 +21,12 @@ class Neuron < ApplicationRecord
   def update_weights(vals, answer)
     result = check_weights(vals, answer)
     if result == 1
-      this.weights.each_key.each_with_index do |k, i|
-        this.weights[k] -= this.learning_rate * vals[i]
+      self.weights.each_key do |k|
+        self.weights[k] -= self.learning_rate * vals[k]
       end
     elsif result == -1
-      this.weights.each_key.each_with_index do |k, i|
-        this.weights[k] += this.learning_rate *vals[i]
+      self.weights.each_key do |k|
+        self.weights[k] += self.learning_rate *vals[k]
       end
     end
   end
