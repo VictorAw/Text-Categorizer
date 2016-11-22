@@ -1,10 +1,9 @@
 require "net/http"
 
 class TextAnalyzer
-  def initialize(text)
-    @text_with_parts_of_speech = get_parts_of_speech(text)
-    @tokens = text_with_parts_of_speech.split
+  attr_reader :statistics
 
+  def initialize
     @statistics = {
       numbers: 0,
       titles: 0,
@@ -14,13 +13,22 @@ class TextAnalyzer
       adverbs: 0,
       adjectives: 0
     }
+  end
 
-    @tokens.each do |token|
-
+  def analyze_text(text)
+    reset_statistics
+    
+    @parts_of_speech = get_parts_of_speech(text)
+    @tokens = text.split
+    @tokens.each do |token, i|
+      
     end
+
+
+    @statistics
   end
 
   def get_parts_of_speech(text)
-    
+    Net::HTTP.get(   
   end
 end
