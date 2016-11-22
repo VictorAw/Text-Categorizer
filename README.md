@@ -27,7 +27,7 @@ The neural net will be trained on wikipedia exerpts and novel exerpts
 
 ## Wireframes
 
-![Front End] (https://github.com/VictorAw/Text-Categorizer/tree/master/docs/wireframes/front-end.jpg)
+![Front End](https://github.com/VictorAw/Text-Categorizer/tree/master/docs/wireframes/front-end.jpg)
 
 ## Technologies and Technical Challenges
 
