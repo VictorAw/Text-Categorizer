@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161122203246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "testing_data", force: :cascade do |t|
     t.string   "body",       null: false
@@ -29,4 +31,14 @@ ActiveRecord::Schema.define(version: 20161122203246) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "neurons", force: :cascade do |t|
+    t.string   "category",      null: false
+    t.float    "threshold",     null: false
+    t.float    "learning_rate", null: false
+    t.hstore   "weights",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["category"], name: "index_neurons_on_category", using: :btree
+>>>>>>> 7837b67515161c5a43c9e72cf6fc216df4405ef1
+  end
 end
