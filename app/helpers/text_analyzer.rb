@@ -29,6 +29,6 @@ class TextAnalyzer
   end
 
   def get_parts_of_speech(text)
-    Net::HTTP.get(   
+    client = Algorithmia.client(
   end
 end
