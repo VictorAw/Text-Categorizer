@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 # Algorithmia for NLP library
 gem 'algorithmia'
 
+# Figaro for API Key hiding
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
