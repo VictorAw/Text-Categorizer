@@ -8,7 +8,6 @@ class TextAnalyzer
   def initialize
     @statistics = {
       numbers: 0,
-      titles: 0,
       pronouns: 0,
       names: 0,
       quotes: 0,
@@ -25,9 +24,6 @@ class TextAnalyzer
     @parts_of_speech = get_parts_of_speech(text).flatten
     @words = text.scan(/[\w'-]+|[[:punct:]]/) # breaking up para by words and punctuations
 
-    # Add to statistics here
-
-    # missing: titles. Need to add
     @parts_of_speech.each do |char|
       if char == '"'
         # Double counting starting and ending quotes
@@ -50,7 +46,6 @@ class TextAnalyzer
 
     # Divide each statistic with the total number of words in the text
     adjust_statistics(@words.length)
-
     @statistics
   end
 
@@ -76,7 +71,9 @@ class TextAnalyzer
     @words = []
   end
 
-  def adjust_statistics
-
+  def adjust_statistics(word_length)
+    @statistics.each do |key, value|
+      @statistics[key] = (value * 1.0)/word_length
+    end
   end
 end
