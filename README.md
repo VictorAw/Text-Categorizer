@@ -50,6 +50,7 @@ Challenges of the project include:
 - Pronouns
 - Human names
 - Quotation marks
+- Commas
 - Adverbs
 - Adjectives
 
@@ -59,6 +60,7 @@ Challenges of the project include:
 
 - Digits
 - Titles/Article names
+- Commas
 
 **Narrative**
 
