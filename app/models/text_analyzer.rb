@@ -16,15 +16,14 @@ class TextAnalyzer
       adjectives: 0
     }
   end
-
+#  what I need to do
   def analyze_text(text)
     reset_statistics
 
     @parts_of_speech = get_parts_of_speech(text)
     # Add to statistics here
-    debugger
     # Divide each statistic with the total number of words in the text
-    @statistics.vals.each_with_index do |val, i|
+    @statistics.values.each_with_index do |val, i|
       @statistics[@statistics.keys[i]] = val.to_f / tokens.to_f
     end
 
@@ -33,7 +32,6 @@ class TextAnalyzer
 
   def get_parts_of_speech(text)
     client = Algorithmia.client(Figaro.env.algorithmia_testing_key)
-    debugger
     algorithm = client.algo("StanfordNLP/POSTagger/0.1.0")
     algorithm.pipe(text).result
   end
