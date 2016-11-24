@@ -13,19 +13,43 @@ class TextAnalyzer
       names: 0,
       quotes: 0,
       adverbs: 0,
-      adjectives: 0
+      adjectives: 0,
+      commas: 0
     }
+    @words = []
   end
 #  what I need to do
   def analyze_text(text)
     reset_statistics
+    reset_words
+    @parts_of_speech = get_parts_of_speech(text).flatten
+    @words = text.scan(/[\w'-]+|[[:punct:]]/) # breaking up para by words and punctuations
 
-    @parts_of_speech = get_parts_of_speech(text)
     # Add to statistics here
-    # Divide each statistic with the total number of words in the text
-    @statistics.values.each_with_index do |val, i|
-      @statistics[@statistics.keys[i]] = val.to_f / tokens.to_f
+
+    # missing: titles. Need to add
+    @parts_of_speech.each do |char|
+      if char == '"'
+        # Double counting starting and ending quotes
+        @statistics[:quotes] += 1
+      elsif char == 'CD'
+        # May be possibly double counting decimals
+        @statistics[:numbers] += 1
+      elsif char == 'PRP' || char == 'PRP$'
+        @statistics[:pronouns] += 1
+      elsif char == 'NNP'
+        @statistics[:names] += 1
+      elsif char == "RB" || char ==  "RBR" || char == 'RBS'
+        @statistics[:adverbs] += 1
+      elsif char =='JJ' || char =='JJR' || char =='JJS'
+        @statistics[:adjectives] += 1
+      elsif char == ','
+        @statistics[:commas] += 1
+      end
     end
+
+    # Divide each statistic with the total number of words in the text
+    adjust_statistics(@words.length)
 
     @statistics
   end
@@ -47,10 +71,12 @@ class TextAnalyzer
       adjectives: 0
     }
   end
-end
 
-class String
-  def is_num?
-    true if Float self rescue false
+  def reset_words
+    @words = []
+  end
+
+  def adjust_statistics
+
   end
 end
