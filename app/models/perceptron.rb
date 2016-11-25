@@ -24,7 +24,7 @@ class Perceptron
     TrainingDatum.all.each do |data|
       statistics = @text_analyzer.analyze_text(data.body)
       @neurons.each do |neuron|
-        neuron.upddate_weights(statistics, data.answer)
+        neuron.update_weights(statistics, data.answer)
       end
     end
   end
