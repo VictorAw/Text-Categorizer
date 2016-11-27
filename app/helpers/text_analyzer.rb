@@ -1,5 +1,3 @@
-#Moved into models to make testing easier. Was in helper earlier
-
 require "algorithmia"
 
 class TextAnalyzer
