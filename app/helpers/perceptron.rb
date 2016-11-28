@@ -1,5 +1,8 @@
 require '../models/neuron'
+require '../models/testing_datum'
+require '../models/training_datum'
 require 'text_analyzer'
+
 
 class Perceptron
   # For reference
