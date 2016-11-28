@@ -1,9 +1,10 @@
-require 'neuron'
+require '../models/neuron'
 require 'text_analyzer'
 
 class Perceptron
   # For reference
   CATEGORIES = ['Expository', 'Narrative']
+  WEIGHTS = [:numbers, :pronouns, :names, :quotes, :adverbs, :adjectives, :commas, :_bias]
 
   def initialize()
     @fails = 0
@@ -11,12 +12,7 @@ class Perceptron
     @misfires = 0
 
     @neurons = Neuron.all
-    @data = []
     @text_analyzer = TextAnalyzer.new
-  end
-
-  def clear_data()
-    @data = []
   end
 
 # Code has some data that needs to increment here. Ask clarification on those
