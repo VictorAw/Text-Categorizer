@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+File.readlines('app/helpers/narrative.txt').each do |line|
+  TestingDatum.create(body: line.chomp, answer: 'narrative')
+end
+
+File.readlines('app/helpers/expository.txt').each do |line|
+  TestingDatum.create(body: line.chomp, answer: 'expository')
+end
