@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :textanalyzers, only: [:index]
+  resources :text_analyzer, only: [:index]
 end
