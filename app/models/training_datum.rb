@@ -1,3 +1,4 @@
 class TrainingDatum < ApplicationRecord
-  validates :body, unique: true
+  validates :body, uniqueness: true, presence: true
+  validates :answer, presence: true
 end
