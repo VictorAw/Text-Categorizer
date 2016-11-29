@@ -1,8 +1,4 @@
-require '../models/neuron'
-require '../models/testing_datum'
-require '../models/training_datum'
-require 'text_analyzer'
-
+require_relative 'text_analyzer'
 
 class Perceptron
   # For reference
@@ -22,6 +18,8 @@ class Perceptron
   def train_neurons()
     TrainingDatum.all.each do |data|
       statistics = @text_analyzer.analyze_text(data.body)
+      statistics[:_bias] = 1
+
       @neurons.each do |neuron|
         neuron.update_weights(statistics, data.answer)
       end
@@ -31,6 +29,8 @@ class Perceptron
   def test_neurons()
     TestingDatum.all.each do |data|
       statistics = @text_analyzer.analyze_text(data.body)
+      statistics[:_bias] = 1
+
       @neurons.each do |neuron|
         neuron.check_weights(statistics, data.answer)
       end
