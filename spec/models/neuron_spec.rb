@@ -58,18 +58,30 @@ RSpec.describe Neuron, type: :model do
 
   describe "#fired" do
     it "should fire correctly" do
-      fired = Neuron.create!(fire_settings)
-      expect(fired.fired(vals)).to be true
+      firing = Neuron.create!(fire_settings)
+      expect(firing.fired(vals)).to be true
 
-      non_fired = Neuron.create!(no_fire_settings)
-      expect(non_fired.fired(vals)).to be false
+      non_firing = Neuron.create!(no_fire_settings)
+      expect(non_firing.fired(vals)).to be false
     end
   end
 
   describe "#update_weights" do
-    it "should update the weights"
+    it "should update the weights" do
+      non_firing = Neuron.create!(no_fire_settings)
+      pre_update_weights = non_firing.weights
+      non_firing.update_weights(vals, "No Fire")
+      post_update_weights = non_firing.weights
+      expect(pre_update_weights).not_to eq(post_update_weights)
+    end
 
-    it "should write to the database"
+    it "should write to the database" do
+      firing = Neuron.create!(fire_settings)
+      pre_update_weights = firing.weights
+      firing.update_weights(vals, "No Fire")
+      post_update_weights = firing.weights
+      expect(pre_update_weights).not_to eq(post_update_weights)
+    end
   end
 
   describe "#check_weights" do
