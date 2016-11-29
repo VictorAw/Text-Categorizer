@@ -12,7 +12,6 @@ class TextAnalyzer
       adverbs: 0,
       adjectives: 0,
       commas: 0,
-      _bias: 1
     }
     @words = []
   end
