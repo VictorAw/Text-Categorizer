@@ -1,5 +1,3 @@
-#Moved into models to make testing easier. Was in helper earlier
-
 require "algorithmia"
 
 class TextAnalyzer
@@ -13,7 +11,8 @@ class TextAnalyzer
       quotes: 0,
       adverbs: 0,
       adjectives: 0,
-      commas: 0
+      commas: 0,
+      _bias: 1
     }
     @words = []
   end
