@@ -14,7 +14,7 @@ class Perceptron
 
   def train_neurons()
     reset_statistics!
-    
+
     TrainingDatum.all.each do |data|
       text_characteristics = @text_analyzer.analyze_text(data.body)
       text_characteristics[:_bias] = 1

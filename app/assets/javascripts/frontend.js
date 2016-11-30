@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
 
   $('#text-analyzer').submit((event) => {
+    event.preventDefault();
     let text = event.target.children[0].value;
     call(text);
   });
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleSuccess = (data) => {
     const result = document.getElementById('results');
-    debugger
-    result.innerHTML  = data;
+    result.innerHTML  = `Text type is: ${data[0]}`;
   };
 });
