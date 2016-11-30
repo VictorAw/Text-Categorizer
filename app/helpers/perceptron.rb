@@ -50,4 +50,16 @@ class Perceptron
       correct: @correct
     }
   end
+
+  def evaluate(text)
+    statistics = @text_analyzer.analyze_text(text)
+    statistics[:_bias] = 1
+    neurons_fired = []
+
+    @neurons.map do |neuron|
+      neurons_fired << neuron.category if neuron.fired(statistics)
+    end
+
+    return neurons_fired
+  end
 end
