@@ -39,7 +39,7 @@ class Perceptron
     end
   end
 
-  def update_statistics
+  def update_statistics(action)
     correct = 0
     fires = 0
     @neurons.each do |neuron|
@@ -47,7 +47,18 @@ class Perceptron
       @fails += neuron.fails
       @correct = neuron.correct
     end
+
     # Calculate multifires
+    if action == Neuron::CORRECTLY_FIRED
+      correct += 1
+      fires += 1
+    elsif action == Neuron::MISFIRED
+      fires += 1
+    end
+
+    if fires >= 2
+      @multifires += 1
+    end
   end
 
   def statistics
