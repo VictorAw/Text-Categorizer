@@ -6,13 +6,6 @@ class Perceptron
   WEIGHTS = [:numbers, :pronouns, :names, :quotes, :adverbs, :adjectives, :commas, :_bias]
 
   def initialize()
-<<<<<<< HEAD
-    @fails = 0
-    @correct = 0
-    @misfires = 0
-
-=======
->>>>>>> abb6378d6c19d7d129b6b2b82a3290f5a972f233
     @neurons = Neuron.all
     @text_analyzer = TextAnalyzer.new
 
@@ -21,7 +14,7 @@ class Perceptron
 
   def train_neurons()
     reset_statistics!
-    
+
     TrainingDatum.all.each do |data|
       text_characteristics = @text_analyzer.analyze_text(data.body)
       text_characteristics[:_bias] = 1
@@ -71,12 +64,6 @@ class Perceptron
       @correct = neuron.correct
     end
 
-<<<<<<< HEAD
-    return {
-      misfires: @misfires,
-      fails: @fails,
-      correct: @correct
-=======
     # Calculate multifires
     if action == Neuron::CORRECTLY_FIRED
       correct += 1
@@ -98,7 +85,6 @@ class Perceptron
         "misfires" => @misfires,
         "multifires" => @multifires
       }
->>>>>>> abb6378d6c19d7d129b6b2b82a3290f5a972f233
     }
     @neurons.each do |neuron|
       stats[neuron.category] = {
