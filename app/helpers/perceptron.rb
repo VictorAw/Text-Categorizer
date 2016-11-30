@@ -9,6 +9,7 @@ class Perceptron
     @fails = 0
     @correct = 0
     @misfires = 0
+    @multifires = 0
 
     @neurons = Neuron.all
     @text_analyzer = TextAnalyzer.new
@@ -22,6 +23,7 @@ class Perceptron
 
       @neurons.each do |neuron|
         neuron.update_weights(statistics, data.answer)
+        update_statistics
       end
     end
   end
@@ -33,15 +35,20 @@ class Perceptron
 
       @neurons.each do |neuron|
         neuron.check_weights(statistics, data.answer)
+        update_statistics
       end
     end
   end
 
-  def statistics
+  def update_statistics
     @neurons.each do |neuron|
       @misfires += neuron.misfires
       @fails += neuron.fails
       @correct = neuron.correct
+    end
+
+    if (@misfires + @correct) > 2
+      @multifires += 1
     end
 
     return {
