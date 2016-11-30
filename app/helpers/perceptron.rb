@@ -4,6 +4,7 @@ class Perceptron
   # For reference
   CATEGORIES = ['Expository', 'Narrative']
   WEIGHTS = [:numbers, :pronouns, :names, :quotes, :adverbs, :adjectives, :commas, :_bias]
+  attr_reader :text_analyzer
 
   def initialize()
     @neurons = Neuron.all
@@ -93,6 +94,8 @@ class Perceptron
         "misfires" => neuron.misfires
       }
     end
+
+    stats
   end
 
   def evaluate(text)
