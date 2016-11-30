@@ -73,14 +73,29 @@ RSpec.describe Neuron, type: :model do
       non_firing.update_weights(vals, "No Fire")
       post_update_weights = non_firing.weights
       expect(pre_update_weights).not_to eq(post_update_weights)
-    end
-
-    it "should write to the database" do
+ 
       firing = Neuron.create!(fire_settings)
       pre_update_weights = firing.weights
       firing.update_weights(vals, "No Fire")
       post_update_weights = firing.weights
       expect(pre_update_weights).not_to eq(post_update_weights)
+    end
+
+    it "should write to the database" do
+      expect {
+        non_firing = Neuron.create!(no_fire_settings)
+        pre_update_weights = non_firing.weights
+        non_firing.update_weights(vals, "No Fire")
+        post_update_weights = non_firing.weights
+      }.to change { Neuron.first }
+
+      expect {
+        firing = Neuron.create!(fire_settings)
+        pre_update_weights = firing.weights
+        firing.update_weights(vals, "No Fire")
+        post_update_weights = firing.weights
+        expect(pre_update_weights).not_to eq(post_update_weights)
+      }.to change { Neuron.second }
     end
   end
 
