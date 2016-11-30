@@ -30,14 +30,12 @@ class Neuron < ApplicationRecord
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] - change_in_weight
-        self.save
       end
       return MISFIRED
     elsif result == FAILED_TO_FIRE
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] + change_in_weight
-        self.save
       end
       return FAILED_TO_FIRE
     elsif result == CORRECTLY_FIRED
@@ -63,6 +61,10 @@ class Neuron < ApplicationRecord
     else
       return 2
     end
+  end
+
+  def save_weights
+    self.save
   end
 
   def reset_statistics
