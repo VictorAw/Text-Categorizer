@@ -1,6 +1,38 @@
+<div class="header">
+  Text Categorizer
+</div>
+
+<div class="desription">
+  <div>A text can come in any form and be any kind of writing. Letters, adverts, user-guides, emails,
+postcards, notes and magazine articles are all different types of text.
+When reading something, it helps to know what type of text it is. It also helps to know why it has
+been written. For example: </div>
+<ul>
+  <li>An article written in the paper debating the ethics of someone's actions is <strong>argumentative</strong></li>
+  <li>A user-guide is <strong>instructive</strong> and is written to tell you how to use something (such as a
+  video recorder or washing-machine).</li>
+  <li>A formal (business) letter might be written to <strong>inform</strong> you about school dates.</li>
+  <li>A personal letter might be written by a friend, <strong>describing</strong> a holiday.</li>
+</ul>
+
+<div>Text can therefore be categorized into four broad categories: <i>Descriptive, Expository, Narrative</i> and <i>Argumentative</i></div>
+
+<div>The purpose of this exercise is to use <strong>Machine Learning</strong> to identify what category a particular body of text is falls under*</div>
+
 <div id="root">
   <form id='text-analyzer'>
-    <textarea id="text" rows="8" cols="80"></textarea>
+    <textarea id="text" rows="8" cols="80" placeholder="Enter paragraph here"></textarea>
     <button type="submit" id="submit">Submit</button>
   </form>
+</div>
+
+<div class="random-text">
+  <button id='random'>Random Text</button>
+</div>
+
+<div id="results">
+  Results here!
+</div>
+
+<div class='caveat'>*Caveat: At the current moment, our machine learning algorithm can only identify texts of Narrative and Expository types, however functionality to add more types will be added soon</div>
 </div>

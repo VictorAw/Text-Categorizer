@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 File.readlines('app/helpers/narrative.txt').each do |line|
-  TestingDatum.create(body: line.chomp, answer: 'narrative')
+  TrainingDatum.create(body: line.chomp, answer: 'narrative')
 end
 
 File.readlines('app/helpers/expository.txt').each do |line|
-  TestingDatum.create(body: line.chomp, answer: 'expository')
+  TrainingDatum.create(body: line.chomp, answer: 'expository')
 end
