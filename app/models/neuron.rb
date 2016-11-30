@@ -26,20 +26,20 @@ class Neuron < ApplicationRecord
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] - change_in_weight
-        self.update
+        self.save
       end
     elsif result == -1
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] + change_in_weight
-        self.update
+        self.save
       end
     end
   end
 
   def check_weights(vals, answer)
     has_fired = fired(vals)
-    should_fire = this.category == answer
+    should_fire = self.category == answer
 
     if !should_fire && has_fired
       # Too sensitive
