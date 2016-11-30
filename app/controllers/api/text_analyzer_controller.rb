@@ -1,6 +1,7 @@
 class Api::TextAnalyzerController < ApplicationController
   def index
     perceptron = Perceptron.new
+    TestingDatum.all[rand(TestingDatum.count)]
     if(params['text'].empty?)
       render json: ["Text can't be empty"], status: 404
     else
