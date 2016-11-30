@@ -5,14 +5,12 @@ class Api::TextAnalyzerController < ApplicationController
     if(params['text'].empty?)
       render json: ["Text can't be empty"], status: 404
     else
-      # change below from training to testing datum later
+      change below from training to testing datum later
       text = params['text'] == 'random' ?
           TrainingDatum.all[rand(TrainingDatum.count)].body : params['text']
-      # result = perceptron.evaluate(text)
-      #
-      # render json: result
+      result = perceptron.evaluate(text)
 
-      render json: [text]
+      render json: result
     end
   end
 end

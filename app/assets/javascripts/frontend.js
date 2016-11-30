@@ -23,6 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleSuccess = (data) => {
     const result = document.getElementById('results');
-    result.innerHTML  = data[0];
+    result.innerHTML  = `Text type is: ${data[0]}`;
   };
 });
