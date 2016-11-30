@@ -47,7 +47,6 @@ class Perceptron
       @fails += neuron.fails
       @correct = neuron.correct
     end
-
     # Calculate multifires
   end
 
