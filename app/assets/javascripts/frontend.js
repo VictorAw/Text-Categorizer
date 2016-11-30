@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     call(text);
   });
 
+  $('#random').click((event) => {
+    call('random');
+  });
+
   const call = (text) => {
     $.ajax({
       url: 'api/text_analyzer',
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleSuccess = (data) => {
     const result = document.getElementById('results');
+    debugger
     result.innerHTML  = data;
   };
 });
