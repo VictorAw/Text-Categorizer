@@ -6,16 +6,15 @@ class Perceptron
   WEIGHTS = [:numbers, :pronouns, :names, :quotes, :adverbs, :adjectives, :commas, :_bias]
 
   def initialize()
-    @correct = 0
-    @fails = 0
-    @misfires = 0
-    @multifires = 0
-
     @neurons = Neuron.all
     @text_analyzer = TextAnalyzer.new
+
+    reset_statistics!
   end
 
   def train_neurons()
+    reset_statistics!
+    
     TrainingDatum.all.each do |data|
       text_characteristics = @text_analyzer.analyze_text(data.body)
       text_characteristics[:_bias] = 1
@@ -25,9 +24,15 @@ class Perceptron
         update_statistics(action)
       end
     end
+
+    @neurons.each do |neuron|
+      neuron.save_weights
+    end
   end
 
   def test_neurons()
+    reset_statistics!
+
     TestingDatum.all.each do |data|
       text_characteristics = @text_analyzer.analyze_text(data.body)
       text_characteristics[:_bias] = 1
@@ -37,6 +42,17 @@ class Perceptron
         update_statistics(action)
       end
     end
+  end
+
+  def reset_statistics!
+    @neurons.each do |neuron|
+      neuron.reset_statistics
+    end
+
+    @correct = 0
+    @fails = 0
+    @misfires = 0
+    @multifires = 0
   end
 
   def update_statistics(action)
@@ -80,12 +96,12 @@ class Perceptron
   end
 
   def evaluate(text)
-    statistics = @text_analyzer.analyze_text(text)
-    statistics[:_bias] = 1
+    text_characteristics = @text_analyzer.analyze_text(text)
+    text_characteristics[:_bias] = 1
     neurons_fired = []
 
     @neurons.map do |neuron|
-      neurons_fired << neuron.category if neuron.fired(statistics)
+      neurons_fired << neuron.category if neuron.fired(text_characteristics)
     end
 
     return neurons_fired
