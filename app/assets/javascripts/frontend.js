@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
 
   $('#text-analyzer').submit((event) => {
+    event.preventDefault();
     let text = event.target.children[0].value;
     call(text);
   });
@@ -16,13 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
       method: 'GET',
       data: { text },
       success: (data) => handleSuccess(data),
-      error: (data) => console.log(data)
+      error: (data) => console.log(data.responseJSON[0])
     });
   };
 
   const handleSuccess = (data) => {
     const result = document.getElementById('results');
-    debugger
-    result.innerHTML  = data;
+    result.innerHTML  = data[0];
   };
 });
