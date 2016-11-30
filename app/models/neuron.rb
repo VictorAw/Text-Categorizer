@@ -5,6 +5,10 @@ class Neuron < ApplicationRecord
 
   attr_reader :correct, :fails, :misfires
 
+  CORRECTLY_FIRED = 0
+  MISFIRED = 1
+  FAILED_TO_FIRE = -1 
+
   def fired(vals)
     total = 0
     weights = get_weights
@@ -22,18 +26,22 @@ class Neuron < ApplicationRecord
   def update_weights(vals, answer)
     result = check_weights(vals, answer)
     weights = get_weights
-    if result == 1
+    if result == MISFIRED
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] - change_in_weight
         self.save
       end
-    elsif result == -1
+      return MISFIRED
+    elsif result == FAILED_TO_FIRE
       weights.each_key do |k|
         change_in_weight = self.learning_rate * vals[k]
         self.weights[k.to_s] = weights[k] + change_in_weight
         self.save
       end
+      return FAILED_TO_FIRE
+    elsif result == CORRECTLY_FIRED
+      return CORRECTLY_FIRED
     end
   end
 
@@ -44,16 +52,16 @@ class Neuron < ApplicationRecord
     if !should_fire && has_fired
       # Too sensitive
       @misfires += 1
-      return 1
+      return MISFIRED
     elsif should_fire && !has_fired
       # Not sensitive enough
       @fails += 1
-      return -1
+      return FAILED_TO_FIRE
     elsif should_fire && has_fired
       @correct += 1
-      return 0
+      return CORRECTLY_FIRED
     else
-      return 1
+      return 2
     end
   end
 
