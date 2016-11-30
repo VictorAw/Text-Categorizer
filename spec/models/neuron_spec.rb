@@ -69,33 +69,16 @@ RSpec.describe Neuron, type: :model do
   describe "#update_weights" do
     it "should update the weights" do
       non_firing = Neuron.create!(no_fire_settings)
-      pre_update_weights = non_firing.weights
+      pre_update_weights = non_firing.get_weights
       non_firing.update_weights(vals, "No Fire")
-      post_update_weights = non_firing.weights
+      post_update_weights = non_firing.get_weights
       expect(pre_update_weights).not_to eq(post_update_weights)
  
       firing = Neuron.create!(fire_settings)
-      pre_update_weights = firing.weights
+      pre_update_weights = firing.get_weights
       firing.update_weights(vals, "No Fire")
-      post_update_weights = firing.weights
+      post_update_weights = firing.get_weights
       expect(pre_update_weights).not_to eq(post_update_weights)
-    end
-
-    it "should write to the database" do
-      expect {
-        non_firing = Neuron.create!(no_fire_settings)
-        pre_update_weights = non_firing.weights
-        non_firing.update_weights(vals, "No Fire")
-        post_update_weights = non_firing.weights
-      }.to change { Neuron.first }
-
-      expect {
-        firing = Neuron.create!(fire_settings)
-        pre_update_weights = firing.weights
-        firing.update_weights(vals, "No Fire")
-        post_update_weights = firing.weights
-        expect(pre_update_weights).not_to eq(post_update_weights)
-      }.to change { Neuron.second }
     end
   end
 
@@ -131,6 +114,22 @@ RSpec.describe Neuron, type: :model do
     end
   end
 
+  describe "#save_weights" do
+    it "should write to the database" do
+      expect {
+        non_firing = Neuron.create!(no_fire_settings)
+        non_firing.update_weights(vals, "No Fire")
+        non_firing.save_weights
+      }.to change { Neuron.first }
+
+      expect {
+        firing = Neuron.create!(fire_settings)
+        firing.update_weights(vals, "No Fire")
+        firing.save_weights
+      }.to change { Neuron.second }
+    end
+  end
+ 
   describe "#reset_statistics" do
     it "should reset statistics" do
       firing = Neuron.create!(fire_settings)
