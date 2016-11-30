@@ -100,10 +100,51 @@ RSpec.describe Neuron, type: :model do
   end
 
   describe "#check_weights" do
-    it "should record statistics correctly"
+    it "should record statistics correctly" do
+      firing = Neuron.create!(fire_settings)
+      firing.check_weights(vals, "Fire")
+      
+      expect(firing.correct).to eq(1)
+      expect(firing.misfires).to eq(0)
+      expect(firing.fails).to eq(0)
+
+      firing.check_weights(vals, "No Fire")
+
+      expect(firing.correct).to eq(1)
+      expect(firing.misfires).to eq(1)
+      expect(firing.fails).to eq(0)
+
+      firing.check_weights(vals, "Fire")
+
+      expect(firing.correct).to eq(2)
+      expect(firing.misfires).to eq(1)
+      expect(firing.fails).to eq(0)
+     
+      non_firing = Neuron.create!(no_fire_settings)
+      non_firing.check_weights(vals, "No Fire")
+
+      expect(non_firing.fails).to eq(1)
+      
+      non_firing.check_weights(vals, "No Fire")
+
+      expect(non_firing.fails).to eq(2)
+    end
   end
 
   describe "#reset_statistics" do
-    it "should reset statistics"
+    it "should reset statistics" do
+      firing = Neuron.create!(fire_settings)
+      firing.check_weights(vals, "Fire")
+      firing.check_weights(vals, "No Fire")
+      firing.check_weights(vals, "Fire")
+      expect(firing.correct).to eq(2)
+      expect(firing.misfires).to eq(1)
+      expect(firing.fails).to eq(0)
+
+      firing.reset_statistics
+      expect(firing.correct).to eq(0)
+      expect(firing.misfires).to eq(0)
+      expect(firing.fails).to eq(0)
+    end
   end
 end
