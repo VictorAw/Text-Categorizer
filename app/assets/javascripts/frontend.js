@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       method: 'GET',
       data: { text },
       success: (data) => handleSuccess(data),
-      error: (data) => console.log(data.responseJSON[0])
+      error: (data) => console.log(data)
     });
   };
 

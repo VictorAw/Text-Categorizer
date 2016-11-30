@@ -9,7 +9,6 @@ class Perceptron
     @fails = 0
     @correct = 0
     @misfires = 0
-    @multifires = 0
 
     @neurons = Neuron.all
     @text_analyzer = TextAnalyzer.new
@@ -45,10 +44,6 @@ class Perceptron
       @misfires += neuron.misfires
       @fails += neuron.fails
       @correct = neuron.correct
-    end
-
-    if (@misfires + @correct) > 2
-      @multifires += 1
     end
 
     return {
