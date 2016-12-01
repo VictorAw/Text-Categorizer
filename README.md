@@ -1,6 +1,7 @@
 # Text-Categorizer
 
-[Live link to be inserted here later]
+[Live Site][heroku]
+[heroku]: https://text-categorizer.herokuapp.com/
 
 Created by
 
