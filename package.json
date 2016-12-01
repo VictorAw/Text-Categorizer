@@ -24,5 +24,8 @@
   "homepage": "https://github.com/VictorAw/Text-Categorizer#readme",
   "dependencies": {
     "webpack": "^1.13.3"
+  },
+  "engines": {
+    "node": "4.1.1"
   }
 }
