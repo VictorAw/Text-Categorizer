@@ -3,8 +3,10 @@
 [Live link to be inserted here later]
 
 Created by
-[Shaurya Sinha]: https://github.com/shaurya157
-[Victor Aw]: https://github.com/VictorAw
+[Shaurya Sinha][shaurya]
+[shaurya]: https://github.com/shaurya157
+[Victor Aw][victor]
+[victor]: https://github.com/VictorAw
 
 A neural net that categorizes a provided text excerpt.
 The neural net will initially only categroize a text into one of two categories: Expository or Narrative.
