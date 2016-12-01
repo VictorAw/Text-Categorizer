@@ -5,7 +5,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # Heroku setup
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
   config.log_level = :debug
 
   # Eager load code on boot. This eager loads most of Rails and
