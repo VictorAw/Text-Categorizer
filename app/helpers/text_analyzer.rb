@@ -1,5 +1,4 @@
 require "algorithmia"
-require 'byebug'
 
 class TextAnalyzer
   attr_reader :statistics
@@ -39,7 +38,7 @@ class TextAnalyzer
   end
 
   def get_parts_of_speech(text)
-    client = Algorithmia.client(Figaro.env.algorithmia_testing_key)
+    client = Algorithmia.client(Figaro.env.algorithmia_key)
     algorithm = client.algo("StanfordNLP/POSTagger/0.1.0")
     algorithm.pipe(text).result
   end
