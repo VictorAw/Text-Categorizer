@@ -8,7 +8,6 @@ class Perceptron
 
   def initialize()
     @neurons = Neuron.all
-    @text_analyzer = TextAnalyzer.new
 
     reset_statistics!
   end
@@ -16,20 +15,18 @@ class Perceptron
   def train_neurons()
     reset_statistics!
 
-    TrainingDatum.all.each do |data|
-      text_characteristics = @text_analyzer.analyze_text(data.body)
-      text_characteristics[:_bias] = 1
+    TrainingValue.all.each do |data|
+      text_characteristics = data.get_values
 
       @neurons.each do |neuron|
         action = neuron.update_weights(text_characteristics, data.answer)
         update_statistics(action)
-        neuron.save_weights
       end
     end
 
-    # @neurons.each do |neuron|
-    #   neuron.save_weights
-    # end
+    @neurons.each do |neuron|
+      neuron.save_weights
+    end
   end
 
   def test_neurons()
