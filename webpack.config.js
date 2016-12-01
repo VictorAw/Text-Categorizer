@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "app/assets/javascripts/text_categorizer.js",
+  entry: "app/assets/javascripts/frontend.js",
   output: {
     path: path.join(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js"

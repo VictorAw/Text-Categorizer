@@ -8,6 +8,7 @@ class Perceptron
 
   def initialize()
     @neurons = Neuron.all
+    @text_analyzer = TextAnalyzer.new
 
     reset_statistics!
   end
