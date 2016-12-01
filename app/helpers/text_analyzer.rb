@@ -1,5 +1,4 @@
 require "algorithmia"
-require 'byebug'
 
 class TextAnalyzer
   attr_reader :statistics
