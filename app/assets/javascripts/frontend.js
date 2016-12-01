@@ -1,32 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
+document.addEventListener('DOMContentLoaded', function() {
+  var root = document.getElementById('root');
 
-  $('#text-analyzer').submit((event) => {
+  $('#text-analyzer').submit(function(event) {
     event.preventDefault();
-    let text = event.target.children[0].value;
+    var text = event.target.children[0].value;
     call(text);
   });
 
-  $('#random').click((event) => {
+  $('#random').click(function(event) {
     call('random');
   });
 
-  const call = (text) => {
+  var call = function(text) {
     $.ajax({
       url: 'api/text_analyzer',
       method: 'GET',
-      data: { text },
-      success: (data) => handleSuccess(data),
-      error: (data) => console.log(data.responseJSON[0])
+      data: { text: text },
+      success: function(data) { handleSuccess(data) },
+      error: function(data) { console.log(data.responseJSON[0]) }
     });
   };
 
-  const handleSuccess = (data) => {
-    const result = document.getElementById('results');
-    debugger
-    result.innerHTML  =
-                      `Text: ${data[1]}
-
-                       Text type is: ${data[0]}`;
+  var handleSuccess = function (data) {
+    var result = document.getElementById('results');
+    result.innerHTML = "Text: " + data[1] + "Text type is: " + data[0];
   };
 });
