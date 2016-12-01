@@ -2,8 +2,17 @@
 
 [Live link to be inserted here later]
 
+Created by
+
+[Shaurya Sinha][shaurya] and [Victor Aw][victor]
+[shaurya]: https://github.com/shaurya157
+[victor]: https://github.com/VictorAw
+
 A neural net that categorizes a provided text excerpt.
 The neural net will initially only categroize a text into one of two categories: Expository or Narrative.
+
+## Screenshots
+
 
 ## Functionality and MVP
 
@@ -32,7 +41,8 @@ The neural net will be trained on wikipedia exerpts and novel exerpts
 ## Technologies and Technical Challenges
 
 - Javascript/HTML
-- Standford NLP to identify parts of speech
+- Algorithmia API to access Stanford Core NLP through HTML requests
+- Standford Core NLP to identify parts of speech
 - N-gram counter
 
 Challenges of the project include:
@@ -45,27 +55,25 @@ Challenges of the project include:
 
 ### Weight Categories
 
-- Digits
-- Titles/Article names
+- Numbers
 - Pronouns
-- Human names
+- Names
 - Quotation marks
-- Commas
 - Adverbs
 - Adjectives
+- Commas
 
 ### Expecting More to Appear In
 
 **Expository**
 
-- Digits
-- Titles/Article names
+- Numbers
 - Commas
 
 **Narrative**
 
 - Pronouns
-- Human names
+- Names
 - Quotation marks
 - Adverbs
 - Adjectives
