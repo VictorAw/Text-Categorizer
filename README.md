@@ -3,9 +3,9 @@
 [Live link to be inserted here later]
 
 Created by
-[Shaurya Sinha][shaurya]
+
+[Shaurya Sinha][shaurya] and [Victor Aw][victor]
 [shaurya]: https://github.com/shaurya157
-[Victor Aw][victor]
 [victor]: https://github.com/VictorAw
 
 A neural net that categorizes a provided text excerpt.
