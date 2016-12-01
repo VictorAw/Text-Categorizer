@@ -9,7 +9,7 @@ class Api::TextAnalyzerController < ApplicationController
           TrainingDatum.all[rand(TrainingDatum.count)].body : params['text']
       result = perceptron.evaluate(text)
 
-      render json: result
+      render json: [result, text]
     end
   end
 end
