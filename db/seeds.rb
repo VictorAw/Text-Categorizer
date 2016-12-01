@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 File.readlines('app/helpers/narrative.txt').each do |line|
-  TrainingDatum.create(body: line.chomp, answer: 'narrative')
+  TrainingDatum.create(body: line.chomp, answer: 'Narrative')
 end
 
 File.readlines('app/helpers/expository.txt').each do |line|
-  TrainingDatum.create(body: line.chomp, answer: 'expository')
+  TrainingDatum.create(body: line.chomp, answer: 'Expository')
 end
 
 Neuron.create({
   category: "Expository",
   threshold: 0.5,
-  learning_rate: 0.1,
+  learning_rate: 0.03,
   weights: {
     numbers: 0.5,
     pronouns: 0.5,
@@ -33,7 +33,7 @@ Neuron.create({
 Neuron.create({
   category: "Narrative",
   threshold: 0.5,
-  learning_rate: 0.1,
+  learning_rate: 0.03,
   weights: {
     numbers: 0.5,
     pronouns: 0.5,

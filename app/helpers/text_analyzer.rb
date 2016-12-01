@@ -1,30 +1,21 @@
 require "algorithmia"
+require 'byebug'
 
 class TextAnalyzer
   attr_reader :statistics
 
   def initialize
-    @statistics = {
-      numbers: 0,
-      pronouns: 0,
-      names: 0,
-      quotes: 0,
-      adverbs: 0,
-      adjectives: 0,
-      commas: 0
-    }
-    @words = []
+    reset_statistics
   end
 #  what I need to do
   def analyze_text(text)
     reset_statistics
-    reset_words
-    @parts_of_speech = get_parts_of_speech(text).flatten
-    @words = text.scan(/[\w'-]+|[[:punct:]]/) # breaking up para by words and punctuations
+    parts_of_speech = get_parts_of_speech(text).flatten
+    words = text.scan(/[\w'-]+|[[:punct:]]/) # breaking up para by words and punctuations
 
-    @parts_of_speech.each do |char|
-      if char == '"'
-        # Double counting starting and ending quotes
+    parts_of_speech.each do |char|
+      if char == "``"
+        # Counting open quotes
         @statistics[:quotes] += 1
       elsif char == 'CD'
         # May be possibly double counting decimals
@@ -43,7 +34,7 @@ class TextAnalyzer
     end
 
     # Divide each statistic with the total number of words in the text
-    adjust_statistics(@words.length)
+    adjust_statistics(words.length)
     @statistics
   end
 
@@ -56,17 +47,13 @@ class TextAnalyzer
   def reset_statistics
     @statistics = {
       numbers: 0,
-      titles: 0,
       pronouns: 0,
       names: 0,
       quotes: 0,
       adverbs: 0,
-      adjectives: 0
+      adjectives: 0,
+      commas: 0
     }
-  end
-
-  def reset_words
-    @words = []
   end
 
   def adjust_statistics(word_length)

@@ -23,12 +23,13 @@ class Perceptron
       @neurons.each do |neuron|
         action = neuron.update_weights(text_characteristics, data.answer)
         update_statistics(action)
+        neuron.save_weights
       end
     end
 
-    @neurons.each do |neuron|
-      neuron.save_weights
-    end
+    # @neurons.each do |neuron|
+    #   neuron.save_weights
+    # end
   end
 
   def test_neurons()
@@ -62,7 +63,7 @@ class Perceptron
     @neurons.each do |neuron|
       @misfires += neuron.misfires
       @fails += neuron.fails
-      @correct = neuron.correct
+      @correct += neuron.correct
     end
 
     # Calculate multifires
@@ -103,7 +104,7 @@ class Perceptron
     text_characteristics[:_bias] = 1
     neurons_fired = []
 
-    @neurons.map do |neuron|
+    @neurons.each do |neuron|
       neurons_fired << neuron.category if neuron.fired(text_characteristics)
     end
 

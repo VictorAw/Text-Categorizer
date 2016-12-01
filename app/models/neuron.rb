@@ -7,7 +7,7 @@ class Neuron < ApplicationRecord
 
   CORRECTLY_FIRED = 0
   MISFIRED = 1
-  FAILED_TO_FIRE = -1 
+  FAILED_TO_FIRE = -1
 
   def fired(vals)
     total = 0
