@@ -3,94 +3,50 @@ require "rails_helper"
 RSpec.describe TextAnalyzer do
   let (:text_analyzer) {TextAnalyzer.new}
 
-  describe "#fired" do
-    it "should fire correctly" do
-      firing = Neuron.create!(fire_settings)
-      expect(firing.fired(vals)).to be true
+  describe "#initialize" do
+    it "should initialize with the right weights" do
 
-      non_firing = Neuron.create!(no_fire_settings)
-      expect(non_firing.fired(vals)).to be false
+      expect(text_analyzer.statistics).to eq({
+        numbers: 0,
+        pronouns: 0,
+        names: 0,
+        quotes: 0,
+        adverbs: 0,
+        adjectives: 0,
+        commas: 0
+      })
     end
   end
 
-  describe "#update_weights" do
-    it "should update the weights" do
-      non_firing = Neuron.create!(no_fire_settings)
-      pre_update_weights = non_firing.get_weights
-      non_firing.update_weights(vals, "No Fire")
-      post_update_weights = non_firing.get_weights
-      expect(pre_update_weights).not_to eq(post_update_weights)
+  describe "#analyze_text" do
+    it "should change the statistics properly" do
+      text_analysis = text_analyzer.analyze_text("Perhaps it was because he was now so busy, what with Quidditch practice three evenings a week on top of all his homework, but Harry could hardly believe it when he realized that he'd already been at Hogwarts two months. The castle felt more like home than Privet Drive ever had. His lessons, too, were")
+      answer = {:numbers=>0.03278688524590164,
+               :pronouns=>0.11475409836065574,
+               :names=>0.04918032786885246,
+               :quotes=>0.0,
+               :adverbs=>0.13114754098360656,
+               :adjectives=>0.01639344262295082,
+               :commas=>0.06557377049180328}
 
-      firing = Neuron.create!(fire_settings)
-      pre_update_weights = firing.get_weights
-      firing.update_weights(vals, "No Fire")
-      post_update_weights = firing.get_weights
-      expect(pre_update_weights).not_to eq(post_update_weights)
-    end
-  end
-
-  describe "#check_weights" do
-    it "should record statistics correctly" do
-      firing = Neuron.create!(fire_settings)
-      firing.check_weights(vals, "Fire")
-
-      expect(firing.correct).to eq(1)
-      expect(firing.misfires).to eq(0)
-      expect(firing.fails).to eq(0)
-
-      firing.check_weights(vals, "No Fire")
-
-      expect(firing.correct).to eq(1)
-      expect(firing.misfires).to eq(1)
-      expect(firing.fails).to eq(0)
-
-      firing.check_weights(vals, "Fire")
-
-      expect(firing.correct).to eq(2)
-      expect(firing.misfires).to eq(1)
-      expect(firing.fails).to eq(0)
-
-      non_firing = Neuron.create!(no_fire_settings)
-      non_firing.check_weights(vals, "No Fire")
-
-      expect(non_firing.fails).to eq(1)
-
-      non_firing.check_weights(vals, "No Fire")
-
-      expect(non_firing.fails).to eq(2)
-    end
-  end
-
-  describe "#save_weights" do
-    it "should write to the database" do
-      expect {
-        non_firing = Neuron.create!(no_fire_settings)
-        non_firing.update_weights(vals, "No Fire")
-        non_firing.save_weights
-      }.to change { Neuron.first }
-
-      expect {
-        firing = Neuron.create!(fire_settings)
-        firing.update_weights(vals, "No Fire")
-        firing.save_weights
-      }.to change { Neuron.second }
+      expect(text_analysis).to eq(answer)
     end
   end
 
   describe "#reset_statistics" do
-    it "should reset statistics" do
-      firing = Neuron.create!(fire_settings)
-      firing.check_weights(vals, "Fire")
-      firing.check_weights(vals, "No Fire")
-      firing.check_weights(vals, "Fire")
-      expect(firing.correct).to eq(2)
-      expect(firing.misfires).to eq(1)
-      expect(firing.fails).to eq(0)
+    it "should reset the statistics" do
+      text_analysis = text_analyzer.analyze_text("Perhaps it was because he was now so busy")
+      text_analyzer.reset_statistics
 
-      firing.reset_statistics
-      expect(firing.correct).to eq(0)
-      expect(firing.misfires).to eq(0)
-      expect(firing.fails).to eq(0)
+      expect(text_analyzer.statistics).to eq({
+        numbers: 0,
+        pronouns: 0,
+        names: 0,
+        quotes: 0,
+        adverbs: 0,
+        adjectives: 0,
+        commas: 0
+      })
     end
   end
 end

@@ -7,16 +7,6 @@ class Perceptron
   attr_reader :text_analyzer
 
   def initialize()
-<<<<<<< HEAD
-<<<<<<< HEAD
-    @fails = 0
-    @correct = 0
-    @misfires = 0
-
-=======
->>>>>>> abb6378d6c19d7d129b6b2b82a3290f5a972f233
-=======
->>>>>>> 35dd7701f0528be705a44ba180d19f78785ce307
     @neurons = Neuron.all
     @text_analyzer = TextAnalyzer.new
 
@@ -76,15 +66,6 @@ class Perceptron
       @correct += neuron.correct
     end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return {
-      misfires: @misfires,
-      fails: @fails,
-      correct: @correct
-=======
-=======
->>>>>>> 35dd7701f0528be705a44ba180d19f78785ce307
     # Calculate multifires
     if action == Neuron::CORRECTLY_FIRED
       correct += 1
@@ -106,10 +87,6 @@ class Perceptron
         "misfires" => @misfires,
         "multifires" => @multifires
       }
-<<<<<<< HEAD
->>>>>>> abb6378d6c19d7d129b6b2b82a3290f5a972f233
-=======
->>>>>>> 35dd7701f0528be705a44ba180d19f78785ce307
     }
     @neurons.each do |neuron|
       stats[neuron.category] = {
