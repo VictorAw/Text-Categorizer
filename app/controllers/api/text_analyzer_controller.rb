@@ -1,6 +1,6 @@
 class Api::TextAnalyzerController < ApplicationController
   def index
-    perceptron = Perceptron.new
+    perceptron = Perceptron.instance
 
     if(params['text'].empty?)
       render json: ["Text can't be empty"], status: 404

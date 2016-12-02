@@ -13,3 +13,102 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button, i,
+ section, img, div, h2, p, form,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+ }
+
+ img {
+  display: block;
+  width: 100%;
+  height: auto;
+ }
+
+ button,
+ input[type="submit"] {
+  cursor: pointer;
+ }
+
+  /*Homepage styling*/
+
+  textarea {
+    border: none;
+    border: 1px solid #CCCCCC;
+    font-family: 'Indie Flower', sans-serif;
+  }
+
+ button{
+   vertical-align: middle;
+   padding: 4px 12px;
+   font-size: 16px;
+   width: 100px;
+   text-align: center;
+   background-color: #8B0000;
+   box-sizing: border-box;
+   -webkit-border-radius: 4px;
+   box-shadow: inset 0px 0px 1px black;
+ }
+
+ button:hover {
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   color: #8B0000;
+   background-color: white;
+ }
+
+ button[disabled]:hover {
+   background-color: grey;
+ }
+
+body {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  color: white;
+  height: 100%;
+  justify-content: space-between;
+  background-color: black;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  overflow: scroll;
+}
+
+html {
+  height: 100%;
+}
+
+.header {
+  margin: 0 auto;
+  font-size: 28px;
+}
+
+strong {
+  color: #8B0000;
+}
+
+#text-analyzer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  margin-top: 10px;
+}

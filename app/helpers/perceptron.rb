@@ -1,6 +1,7 @@
 require_relative 'text_analyzer'
 
 class Perceptron
+  include Singleton
   # For reference
   CATEGORIES = ['Expository', 'Narrative']
   WEIGHTS = [:numbers, :pronouns, :names, :quotes, :adverbs, :adjectives, :commas, :_bias]

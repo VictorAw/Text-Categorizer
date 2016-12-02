@@ -5,6 +5,7 @@ class TextAnalyzer
 
   def initialize
     reset_statistics
+    @client = Algorithmia.client(Figaro.env.algorithmia_key)
   end
 #  what I need to do
   def analyze_text(text)
@@ -38,8 +39,7 @@ class TextAnalyzer
   end
 
   def get_parts_of_speech(text)
-    client = Algorithmia.client(Figaro.env.algorithmia_key)
-    algorithm = client.algo("StanfordNLP/POSTagger/0.1.0")
+    algorithm = @client.algo("StanfordNLP/POSTagger/0.1.0")
     algorithm.pipe(text).result
   end
 
