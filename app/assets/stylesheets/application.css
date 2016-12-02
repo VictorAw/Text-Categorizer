@@ -112,3 +112,12 @@ strong {
 .buttons {
   margin-top: 10px;
 }
+
+.highlighted {
+  color: red;
+}
+
+#results {
+  display: flex;
+  justify-content: space-around;
+}

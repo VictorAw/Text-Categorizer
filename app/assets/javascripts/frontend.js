@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       method: 'GET',
       data: { text: text },
       success: function(data) { handleSuccess(data);},
-      error: function(data) { console.log(data.responseJSON[0]);}
+      error: function(data) { handleError(); }
     });
   };
 
@@ -29,10 +29,29 @@ document.addEventListener('DOMContentLoaded', function() {
     var result = document.getElementById('results');
     $('#text').val(data[1]);
 
-    result.innerHTML = "Text type is: " + data[0];
+    if(data[0].includes('Narrative')){
+      $('.narrative').addClass('highlighted');
+    } else {
+      $('.narrative').removeClass('highlighted');
+    }
+
+    if(data[0].includes('Expository')){
+        $('.expository').addClass('highlighted');
+      } else {
+        $('.expository').removeClass('highlighted');
+      }
+
+
+    // result.innerHTML = "Text type is: " + data[0];
     $('#random').prop('disabled', false);
     $('#submit').prop('disabled', false);
   };
 
-
+  var handleError = function(){
+    $('#text').val("Text can't be blank!");
+    $('#random').prop('disabled', false);
+    $('#submit').prop('disabled', false);
+    $('.narrative').removeClass('highlighted');
+    $('.expository').removeClass('highlighted');
+  };
 });
