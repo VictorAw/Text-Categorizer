@@ -121,3 +121,9 @@ strong {
   display: flex;
   justify-content: space-around;
 }
+
+#results > div {
+  border: 1px solid #CCCCCC;
+  color: white;
+
+}
