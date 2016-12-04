@@ -30,12 +30,7 @@
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
- }
-
- img {
-  display: block;
-  width: 100%;
-  height: auto;
+  color: black;
  }
 
  button,
@@ -49,6 +44,7 @@
     border: none;
     border: 1px solid #CCCCCC;
     font-family: 'Indie Flower', sans-serif;
+    background-color: #FBFAF6;
   }
 
  button{
@@ -57,16 +53,16 @@
    font-size: 16px;
    width: 100px;
    text-align: center;
-   background-color: #8B0000;
+   background-color: #A53523;
    box-sizing: border-box;
    -webkit-border-radius: 4px;
-   box-shadow: inset 0px 0px 1px black;
+   color: white;
  }
 
  button:hover {
    -webkit-transition-duration: 0.4s; /* Safari */
    transition-duration: 0.4s;
-   color: #8B0000;
+   color: #A53523;
    background-color: white;
  }
 
@@ -78,10 +74,10 @@ body {
   display: flex;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
-  color: white;
+  color: black;
   height: 120%;
   justify-content: space-between;
-  background-color: black;
+  background-color: #F3EFE4;
   flex-direction: column;
   padding-left: 50px;
   padding-right: 50px;
@@ -100,7 +96,7 @@ html {
 }
 
 strong {
-  color: #8B0000;
+  color: #A53523;
 }
 
 #text-analyzer {
@@ -113,11 +109,6 @@ strong {
   margin-top: 10px;
 }
 
-.highlighted {
-  transition-duration: 0.4s;
-  background-color: #8B0000;
-}
-
 #results {
   display: flex;
   justify-content: space-around;
@@ -125,11 +116,12 @@ strong {
 
 .expository, .narrative {
   border: 1px solid #CCCCCC;
+  background-color: #FBFAF6;
   color: white;
-  height: 200px;
+  height: 220px;
   padding: 20px;
   margin: 10px;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -143,4 +135,13 @@ strong {
 
 .header {
   font-family: 'Bungee', 'sans-serif';
+}
+
+.highlighted {
+  transition-duration: 0.4s;
+  background-color: #A53523;
+}
+
+ul {
+  padding-left: 18px;
 }

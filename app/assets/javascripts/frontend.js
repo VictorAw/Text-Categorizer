@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     call('random');
     $('#random').prop('disabled', true);
     $('#submit').prop('disabled', true);
+    $('.narrative').removeClass('highlighted');
+    $('.expository').removeClass('highlighted');
   });
 
   var call = function(text) {

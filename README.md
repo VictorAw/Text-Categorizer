@@ -9,11 +9,10 @@ Created by
 [shaurya]: https://github.com/shaurya157
 [victor]: https://github.com/VictorAw
 
-A neural net that categorizes a provided text excerpt.
-The neural net will initially only categroize a text into one of two categories: Expository or Narrative.
+Text Categorizer is a machine learning algorithm capable of identifying text
 
-## Screenshots
-
+[test]: ./screenshots/test.png
+[home]: ./screenshots/home.png
 
 ## Functionality and MVP
 
@@ -25,7 +24,7 @@ The neural net will be able to:
 
 ## Training Data
 
-The neural net will be trained on wikipedia exerpts and novel exerpts
+The neural net will be trained on wikipedia excerpts and novel excerpts
 
 ## API Endpoints
 
@@ -48,7 +47,7 @@ The neural net will be trained on wikipedia exerpts and novel exerpts
 
 Challenges of the project include:
 
-- Deciding how to reduce a text excerpt into inputs for the nerual net
+- Deciding how to reduce a text excerpt into inputs for the neural net
 - Extracting the information required from the text into the inputs for the neural net
 - Writing the learning algorithm for the neural net to be as accurate as possible
 
