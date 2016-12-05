@@ -5,8 +5,7 @@
 <div class="desription">
   <div>A text can come in any form and be any kind of writing. Letters, adverts, user-guides, emails,
 postcards, notes and magazine articles are all different types of text.
-When reading something, it helps to know what type of text it is. It also helps to know why it has
-been written. For example: </div><br />
+When reading something, it helps to know why it has been written. For example: </div><br />
 <ul>
   <li>An article written in the paper debating the ethics of someone's actions is <strong>argumentative</strong>.</li>
   <li>A user-guide is <strong>instructive</strong> and is written to tell you how to use something (such as a
@@ -18,7 +17,35 @@ been written. For example: </div><br />
 <div>Text can therefore be categorized into four broad categories: <i>Descriptive, Expository, Narrative</i> and <i>Argumentative</i></div>
 
 <div>The purpose of this project is to use <strong>Machine Learning</strong> to identify what category a particular body of text falls under. At the current moment, our machine learning algorithm can only identify texts of Narrative and Expository types, however functionality to include more types will be added soon.</div>
+<h3>How does the algorithm work?</h3>
+<div>The neural net has been trained on 100+ pieces of text. Everytime a text goes through the perceptron, it's broken down into the following characteristcs/statistics</div>
+<ul>
+  <li>Numbers</li>
+  <li>Pronouns</li>
+  <li>Names</li>
+  <li>Quotes</li>
+  <li>Adverbs</li>
+  <li>Adjectives</li>
+  <li>Commas</li>
+</ul>
+<div>
+  On every iteration of training data analysis, each neuron is given the average statistic (per number of words in the para) along with the correct answer. There is one neuron per text category (Narrative, Expository), which on receiving the data, fires if:
+</div>
+<strong class='formula'>
+  Sum of each (Neuron weight * Statistic) > Threshold
+</strong>
+<div>
+  If the neuron doesn't fire (and is supposed to fire), it adjusts its own weights to become more accurate for the future:
+</div>
+<strong class='formula'>
+  Statistics * Learning Rate = Change
 
+</strong>
+<strong class='formula'>
+  Neuron weight -/+ Change
+</strong>
+
+<h3 class='demo'>Demo</h3>
 <div id="root">
   <form id='text-analyzer'>
     <textarea id="text" rows="8" cols="80" placeholder="Enter paragraph here"></textarea>

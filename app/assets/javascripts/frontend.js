@@ -28,23 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   var handleSuccess = function (data) {
-    var result = document.getElementById('results');
-    $('#text').val(data[1]);
+    data = data[0];
 
-    if(data[0].includes('Narrative')){
+    if(data !== 'Narrative' && data !== 'Expository'){
+      $('#text').val(data);
+    }
+
+    if(data.includes('Narrative')){
       $('.narrative').addClass('highlighted');
     } else {
       $('.narrative').removeClass('highlighted');
     }
 
-    if(data[0].includes('Expository')){
+    if(data.includes('Expository')){
         $('.expository').addClass('highlighted');
       } else {
         $('.expository').removeClass('highlighted');
       }
 
-
-    // result.innerHTML = "Text type is: " + data[0];
     $('#random').prop('disabled', false);
     $('#submit').prop('disabled', false);
   };

@@ -75,7 +75,7 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
   color: black;
-  height: 120%;
+  height: 1400px;
   justify-content: space-between;
   background-color: #F3EFE4;
   flex-direction: column;
@@ -144,4 +144,12 @@ strong {
 
 ul {
   padding-left: 18px;
+}
+
+.formula {
+  padding-left: 30px;
+}
+
+.demo {
+  margin: 0 auto;
 }
