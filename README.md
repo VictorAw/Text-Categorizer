@@ -9,22 +9,25 @@ Created by
 [shaurya]: https://github.com/shaurya157
 [victor]: https://github.com/VictorAw
 
-Text Categorizer is a machine learning algorithm capable of identifying text
+Text Categorizer is a machine learning algorithm capable of categorizing text between two categories - Narrative and Expository. Functionality to add further categories to be added soon.
 
 [test]: ./screenshots/test.png
+
+Users will be able to either choose random text in the demo or input their own text. The random text is testing data that has not been included while training the neural net.
+
 [home]: ./screenshots/home.png
 
 ## Functionality and MVP
 
 The neural net will be able to:
-- [ ] Be trained using training data
-- [ ] \(Mostly) Accurately identify whether a text is descriptive or narrative after being trained
-- [ ] Be accessed through an API endpoint
-- [ ] Be accessed through a Javascript frontend
+- [x] Be trained using training data
+- [x] \(Mostly) Accurately identify whether a text is descriptive or narrative after being trained
+- [x] Be accessed through an API endpoint
+- [x] Be accessed through a Javascript frontend
 
 ## Training Data
 
-The neural net will be trained on wikipedia excerpts and novel excerpts
+The neural net will be trained on wikipedia excerpts and novel excerpts. Currently there is 100 training data from a range of articles and books however more data will be added soon.
 
 ## API Endpoints
 
@@ -40,10 +43,11 @@ The neural net will be trained on wikipedia excerpts and novel excerpts
 
 ## Technologies and Technical Challenges
 
-- Javascript/HTML
+- Ruby on Rails backend
+- Javascript/HTML on Frontend
+- JQuery
 - Algorithmia API to access Stanford Core NLP through HTML requests
 - Standford Core NLP to identify parts of speech
-- N-gram counter
 
 Challenges of the project include:
 

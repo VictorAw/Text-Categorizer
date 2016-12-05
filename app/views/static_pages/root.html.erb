@@ -29,7 +29,7 @@ When reading something, it helps to know why it has been written. For example: <
   <li>Commas</li>
 </ul>
 <div>
-  On every iteration of training data analysis, each neuron is given the average statistic (per number of words in the para) along with the correct answer. There is one neuron per text category (Narrative, Expository), which on receiving the data, fires if:
+  On every iteration of training data analysis, each neuron is given the average statistic (per number of words in the para)(using the Stanford Core NLP library) along with the correct answer. There is one neuron per text category (Narrative, Expository), which on receiving the data, fires if:
 </div>
 <strong class='formula'>
   Sum of each (Neuron weight * Statistic) > Threshold
@@ -39,12 +39,13 @@ When reading something, it helps to know why it has been written. For example: <
 </div>
 <strong class='formula'>
   Statistics * Learning Rate = Change
-
 </strong>
 <strong class='formula'>
   Neuron weight -/+ Change
 </strong>
-
+<div>
+  In its current state, our neural net analyzes text with 75%+ accuracy, however this accuracy will be further increased as more training data is added.
+</div>
 <h3 class='demo'>Demo</h3>
 <div id="root">
   <form id='text-analyzer'>
