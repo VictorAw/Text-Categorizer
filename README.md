@@ -36,7 +36,7 @@ The neural net will be trained on wikipedia excerpts and novel excerpts. Current
 ## Technologies and Technical Challenges
 
 - Ruby on Rails backend
-- Javascript/HTML on Frontend
+- Javascript/HTML frontend
 - JQuery
 - Algorithmia API to access Stanford Core NLP through HTML requests
 - Standford Core NLP to identify parts of speech
