@@ -11,11 +11,11 @@ Created by
 
 Text Categorizer is a machine learning algorithm capable of categorizing text between two categories - Narrative and Expository. Functionality to add further categories to be added soon.
 
-[test]: ./screenshots/test.png
+![test](./screenshots/test.png)
 
 Users will be able to either choose random text in the demo or input their own text. The random text is testing data that has not been included while training the neural net.
 
-[home]: ./screenshots/home.png
+![home](./screenshots/home.png)
 
 ## Functionality and MVP
 
