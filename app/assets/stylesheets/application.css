@@ -66,8 +66,9 @@
    background-color: white;
  }
 
- button[disabled]:hover {
+ button[disabled] {
    background-color: grey;
+   color: white;
  }
 
 body {
