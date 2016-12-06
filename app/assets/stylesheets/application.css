@@ -13,3 +13,144 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button,
+ section, img, div, h2, p, form,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  color: black;
+ }
+
+ button,
+ input[type="submit"] {
+  cursor: pointer;
+ }
+
+  /*Homepage styling*/
+
+  textarea {
+    border: none;
+    border: 1px solid #CCCCCC;
+    font-family: 'Indie Flower', sans-serif;
+    background-color: #FBFAF6;
+  }
+
+ button{
+   vertical-align: middle;
+   padding: 4px 12px;
+   font-size: 16px;
+   width: 100px;
+   text-align: center;
+   background-color: #A53523;
+   box-sizing: border-box;
+   -webkit-border-radius: 4px;
+   color: white;
+ }
+
+ button:hover {
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   color: #A53523;
+   background-color: white;
+ }
+
+ button[disabled] {
+   background-color: grey;
+   color: white;
+ }
+
+body {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  color: black;
+  height: 1500px;
+  justify-content: space-between;
+  background-color: #F3EFE4;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  overflow: scroll;
+}
+
+html {
+  height: 100%;
+}
+
+.header {
+  margin: 0 auto;
+  font-size: 28px;
+}
+
+strong {
+  color: #A53523;
+}
+
+#text-analyzer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+#results {
+  display: flex;
+  justify-content: space-around;
+}
+
+.expository, .narrative {
+  border: 1px solid #CCCCCC;
+  background-color: #FBFAF6;
+  color: white;
+  height: 220px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%
+}
+
+.results-header {
+  margin: 0 auto;
+  font-size: 30px;
+}
+
+.header {
+  font-family: 'Bungee', 'sans-serif';
+}
+
+.highlighted {
+  transition-duration: 0.4s;
+  background-color: #A53523;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+.formula {
+  padding-left: 30px;
+}
+
+.demo {
+  margin: 0 auto;
+}

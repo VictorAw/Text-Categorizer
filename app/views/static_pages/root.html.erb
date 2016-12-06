@@ -5,31 +5,89 @@
 <div class="desription">
   <div>A text can come in any form and be any kind of writing. Letters, adverts, user-guides, emails,
 postcards, notes and magazine articles are all different types of text.
-When reading something, it helps to know what type of text it is. It also helps to know why it has
-been written. For example: </div>
+When reading something, it helps to know why it has been written. For example: </div><br />
 <ul>
-  <li>An article written in the paper debating the ethics of someone's actions is <strong>argumentative</strong></li>
+  <li>An article written in the paper debating the ethics of someone's actions is <strong>argumentative</strong>.</li>
   <li>A user-guide is <strong>instructive</strong> and is written to tell you how to use something (such as a
   video recorder or washing-machine).</li>
   <li>A formal (business) letter might be written to <strong>inform</strong> you about school dates.</li>
   <li>A personal letter might be written by a friend, <strong>describing</strong> a holiday.</li>
 </ul>
-
+</div>
 <div>Text can therefore be categorized into four broad categories: <i>Descriptive, Expository, Narrative</i> and <i>Argumentative</i></div>
 
-<div>The purpose of this exercise is to use <strong>Machine Learning</strong> to identify what category a particular body of text is falls under. At the current moment, our machine learning algorithm can only identify texts of Narrative and Expository types, however functionality to add more types will be added soon</div>
-
+<div>The purpose of this project is to use <strong>Machine Learning</strong> to identify what category a particular body of text falls under. At the current moment, our machine learning algorithm can only identify texts of Narrative and Expository types, however functionality to include more types will be added soon.</div>
+<h3>How does the algorithm work?</h3>
+<div>The neural net has been trained on 100+ pieces of text. Everytime a text goes through the perceptron, it's broken down into the following characteristcs/statistics</div>
+<ul>
+  <li>Numbers</li>
+  <li>Pronouns</li>
+  <li>Names</li>
+  <li>Quotes</li>
+  <li>Adverbs</li>
+  <li>Adjectives</li>
+  <li>Commas</li>
+</ul>
+<div>
+  On every iteration of training data analysis, each neuron is given the average statistic (per number of words in the para)(using the Stanford Core NLP library) along with the correct answer. There is one neuron per text category (Narrative, Expository), which on receiving the data, fires if:
+</div>
+<strong class='formula'>
+  Sum of each (Neuron weight * Statistic) > Threshold
+</strong>
+<div>
+  If the neuron doesn't fire (and is supposed to fire), it adjusts its own weights to become more accurate for the future:
+</div>
+<strong class='formula'>
+  Statistics * Learning Rate = Change
+</strong>
+<strong class='formula'>
+  Neuron weight -/+ Change
+</strong>
+<div>
+  In its current state, our neural net analyzes text with 75%+ accuracy, however this accuracy will be further increased as more training data is added.
+</div>
+<h3 class='demo'>Demo</h3>
 <div id="root">
   <form id='text-analyzer'>
     <textarea id="text" rows="8" cols="80" placeholder="Enter paragraph here"></textarea>
-    <button type="submit" id="submit">Submit</button>
+    <div class='buttons'>
+      <button type="submit" id="submit">Submit</button>
+      <button id='random'>Random</button>
+    </div>
   </form>
 </div>
 
-<div class="random-text">
-  <button id='random'>Random Text</button>
-</div>
-
 <div id="results">
-  Results here!
+  <div class="narrative">
+    <div class="results-header">
+      Narrative
+    </div>
+    <div class="results-description">
+      Narration is the telling of a story: the text in this category usually comes from fiction books which try to describe an occurance in chronological fashion.
+    </div>
+    <div class="characteristics">
+      Classifying characteristics:
+      <ul>
+        <li>Distinct increase of pronouns and names</li>
+        <li>Increased presence of quotation marks</li>
+        <li>Increased presence of names and commas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="expository">
+    <div class="results-header">
+      Expository
+    </div>
+    <div class="results-description">
+      Text which is derived from information. Expository text exists to provide facts in a way that is educational and informative.
+    </div>
+    <div class="characteristics">
+      Classifying characteristics:
+      <ul>
+        <li>Distinct lack of pronouns</li>
+        <li>Lack of names (vs. narrative text)</li>
+        <li>Lack of quotation marks</li>
+      </ul>
+    </div>
+  </div>
 </div>
